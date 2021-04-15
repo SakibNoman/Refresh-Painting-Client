@@ -1,5 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
+import 'react-circular-progressbar/dist/styles.css';
 import ReactDOM from 'react-dom';
 import App from './App';
 import './index.css';
