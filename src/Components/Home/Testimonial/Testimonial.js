@@ -28,7 +28,7 @@ const testimonialInfo = [
 
 const Testimonial = () => {
     return (
-        <section>
+        <section className="mt-5" >
             <div className="container">
                 <div className="row justify-content-center">
                     <div className="col-12 mb-5" >

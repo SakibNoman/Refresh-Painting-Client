@@ -37,7 +37,7 @@ const projectList = [
 
 const Projects = () => {
     return (
-        <section>
+        <section className="mt-5" >
             <div className="container">
                 <div className="row justify-content-center">
                     <div className="col-12 mt-5" > <h3 className="text-center" ><Badge variant="danger" pill >Projects</Badge></h3> </div>
