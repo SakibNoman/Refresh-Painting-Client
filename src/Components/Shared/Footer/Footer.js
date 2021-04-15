@@ -1,4 +1,5 @@
 import { faFacebookSquare, faInstagramSquare, faLinkedin, faYoutubeSquare } from '@fortawesome/free-brands-svg-icons';
+import { faMapMarker } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 
@@ -8,7 +9,7 @@ const Footer = () => {
             <div className="container">
                 <div className="row">
                     <div className="col-md-4">
-                        <h6>H#000 (0th Floor), Road #00, New DOHS, Mohakhali, Dhaka, Bangladesh</h6>
+                        <h6> <FontAwesomeIcon className="mr-1" icon={faMapMarker} /> H#000 (0th Floor), Road #00, New DOHS, Mohakhali, Dhaka, Bangladesh</h6>
                     </div>
                     <div className="col-md-2">
                         <h5 className="mb-4 mt-md-0 mt-4">Company</h5>

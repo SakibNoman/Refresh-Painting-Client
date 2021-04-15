@@ -27,7 +27,7 @@ const skillInfo = [
 
 const About = () => {
     return (
-        <section className="mt-5" >
+        <section className="my-5" >
             <div className="container">
                 <div className="row justify-content-center">
                     <div className="col-12 mt-5" > <h3 className="text-center" ><Badge variant="danger" pill >About us</Badge></h3> </div>
