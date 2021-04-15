@@ -1,6 +1,8 @@
 import React from 'react';
 import TopBar from '../../Shared/TopBar/TopBar';
+import Projects from '../Projects/Projects';
 import Services from '../Services/Services';
+import Testimonial from '../Testimonial/Testimonial';
 import TopBanner from '../TopBanner/TopBanner';
 
 const Home = () => {
@@ -9,6 +11,8 @@ const Home = () => {
             <TopBar></TopBar>
             <TopBanner></TopBanner>
             <Services></Services>
+            <Projects></Projects>
+            <Testimonial></Testimonial>
         </div>
     );
 };
