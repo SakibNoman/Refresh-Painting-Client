@@ -17,23 +17,23 @@ const Contact = () => {
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <div className="row">
                                 <div className="col-md-6">
-                                    <input className="form-control mb-4" placeholder="First Name" {...register("example")} />
+                                    <input className="form-control mb-4 border-0 bg-light" placeholder="First Name" {...register("example")} />
                                 </div>
                                 <div className="col-md-6">
-                                    <input className="form-control mb-4" placeholder="Last Name" {...register("example")} />
+                                    <input className="form-control mb-4 border-0 bg-light" placeholder="Last Name" {...register("example")} />
                                 </div>
                             </div>
                             <div className="row">
                                 <div className="col-md-6">
-                                    <input className="form-control mb-4" placeholder="Email Address" {...register("example")} />
+                                    <input className="form-control mb-4 border-0 bg-light" placeholder="Email Address" {...register("example")} />
                                 </div>
                                 <div className="col-md-6">
-                                    <input className="form-control mb-4" placeholder="Phone Number" {...register("example")} />
+                                    <input className="form-control mb-4 border-0 bg-light" placeholder="Phone Number" {...register("example")} />
                                 </div>
                             </div>
                             <div className="row">
                                 <div className="col-md-12">
-                                    <textarea rows="4" className="form-control mb-4" placeholder="Your Message" {...register("example")} />
+                                    <textarea rows="5" style={{ resize: 'none' }} className="form-control mb-4 border-0 bg-light" placeholder="Your Message" {...register("example")} />
                                 </div>
                             </div>
                             <div className="row">
