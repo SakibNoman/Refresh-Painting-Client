@@ -4,6 +4,9 @@ import {
   Route, Switch
 } from "react-router-dom";
 import './App.css';
+import Book from "./Components/Dashboard/Book/Book";
+import BookingList from "./Components/Dashboard/BookingList/BookingList";
+import Review from "./Components/Dashboard/Review/Review";
 import About from "./Components/Home/About/About";
 import Home from "./Components/Home/Home/Home";
 import Projects from "./Components/Home/Projects/Projects";
@@ -38,6 +41,15 @@ function App() {
           <TopBar></TopBar>
           <Projects></Projects>
           <Footer></Footer>
+        </Route>
+        <Route path="/dashboard/book" >
+          <Book></Book>
+        </Route>
+        <Route path="/dashboard/bookingList" >
+          <BookingList></BookingList>
+        </Route>
+        <Route path="/dashboard/review" >
+          <Review></Review>
         </Route>
       </Switch>
     </Router>

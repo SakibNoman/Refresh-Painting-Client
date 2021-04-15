@@ -22,6 +22,7 @@ const TopBar = () => {
                     <Nav.Link as={Link} className="mr-4" to="/about">About</Nav.Link>
                     <Nav.Link as={Link} className="mr-4" to="/services">Services</Nav.Link>
                     <Nav.Link as={Link} className="mr-4" to="/projects">Project</Nav.Link>
+                    <Nav.Link as={Link} className="mr-4" to="/dashboard/bookingList">Dashboard</Nav.Link>
                 </Nav>
                 <Button as={Link} to="/login" variant="outline-danger">Login</Button>
             </Navbar.Collapse>
