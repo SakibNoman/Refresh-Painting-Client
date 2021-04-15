@@ -1,7 +1,10 @@
 import React from 'react';
+import { useForm } from "react-hook-form";
 import Sidebar from '../Sidebar/Sidebar';
 
 const Review = () => {
+    const { register, handleSubmit, formState: { errors } } = useForm();
+    const onSubmit = data => console.log(data);
     return (
         <section>
             <div className="row mr-0">
@@ -9,7 +12,31 @@ const Review = () => {
                     <Sidebar></Sidebar>
                 </div>
                 <div className="col-md-10 col-sm-12 col-12 d-flex justify-content-center">
-                    <h1>Review of user goes here</h1>
+                    <div className="col-md-6 mt-5 pt-5">
+                        <form onSubmit={handleSubmit(onSubmit)}>
+                            <div className="row">
+                                <div className="col-md-12">
+                                    <input className="form-control mb-4 border-0 bg-light" placeholder="Your Name" {...register("example")} />
+                                </div>
+                                <div className="col-md-12">
+                                    <input className="form-control mb-4 border-0 bg-light" placeholder="Company's name, Designation" {...register("example")} />
+                                </div>
+                                <div className="col-md-12">
+                                    <input type="number" min="0" max="5" className="form-control mb-4 border-0 bg-light" placeholder="Rating out of 5" {...register("example")} />
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col-md-12">
+                                    <textarea rows="5" style={{ resize: 'none' }} className="form-control mb-4 border-0 bg-light" placeholder="Description" {...register("example")} />
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col-md-12 text-center">
+                                    <input className="btn btn-danger" type="submit" />
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </section>
