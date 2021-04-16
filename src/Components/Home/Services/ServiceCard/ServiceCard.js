@@ -2,7 +2,7 @@ import React from 'react';
 import { Card } from 'react-bootstrap';
 
 const ServiceCard = ({ serviceInfo }) => {
-    const { serviceName, serviceImg, serviceDesc } = serviceInfo;
+    const { serviceName, serviceImg, serviceDesc, servicePrice } = serviceInfo;
     return (
         <div className="col-md-4 d-flex justify-content-center mb-5">
             <Card border="light" className="shadow" style={{ width: '18rem' }}>
@@ -11,7 +11,7 @@ const ServiceCard = ({ serviceInfo }) => {
                     <Card.Img variant="top" style={{ width: '100px' }} src={serviceImg} />
                 </div>
                 <Card.Body>
-                    <Card.Title className="text-danger" > $ 255 </Card.Title>
+                    <Card.Title className="text-danger" > $ {servicePrice} </Card.Title>
                     <Card.Text>
                         {serviceDesc}
                     </Card.Text>

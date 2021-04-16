@@ -1,5 +1,5 @@
 import React from 'react';
-import serviceImg from '../../../images/serviceImg';
+import serviceImg from '../../../images/serviceExterior';
 import Sidebar from '../Sidebar/Sidebar';
 import BookingCard from './BookingCard';
 

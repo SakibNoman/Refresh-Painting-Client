@@ -1,13 +1,15 @@
 import { createContext, useState } from "react";
 import {
   BrowserRouter as Router,
-
   Route, Switch
 } from "react-router-dom";
 import './App.css';
 import AddService from "./Components/Dashboard/AddService/AddService";
 import Book from "./Components/Dashboard/Book/Book";
 import BookingList from "./Components/Dashboard/BookingList/BookingList";
+import MakeAdmin from "./Components/Dashboard/MakeAdmin/MakeAdmin";
+import MangeServices from "./Components/Dashboard/MangeServices/MangeServices";
+import OrderList from "./Components/Dashboard/OrderList/OrderList";
 import Review from "./Components/Dashboard/Review/Review";
 import About from "./Components/Home/About/About";
 import Home from "./Components/Home/Home/Home";
@@ -59,6 +61,15 @@ function App() {
           </Route>
           <Route path="/dashboard/addService" >
             <AddService></AddService>
+          </Route>
+          <Route path="/dashboard/manageServices" >
+            <MangeServices></MangeServices>
+          </Route>
+          <Route path="/dashboard/makeAdmin" >
+            <MakeAdmin></MakeAdmin>
+          </Route>
+          <Route path="/dashboard/orderList" >
+            <OrderList></OrderList>
           </Route>
         </Switch>
       </Router>

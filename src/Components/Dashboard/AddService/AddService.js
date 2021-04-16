@@ -6,12 +6,12 @@ const AddService = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [imageUrl, setImageUrl] = useState('');
     const [btnEnable, setBtnEnable] = useState(false);
-    const onSubmit = data => {
+    const onSubmit = (data, e) => {
         const eventValue = {
-            serviceTitle: data.title,
+            serviceName: data.title,
             servicePrice: data.price,
-            productImage: imageUrl,
-            description: data.description
+            serviceImg: imageUrl,
+            serviceDesc: data.description
         }
 
         fetch('http://localhost:5000/addService', {
@@ -25,6 +25,7 @@ const AddService = () => {
                 console.log("Success");
                 alert("Uploaded Successfully")
             })
+        e.target.reset()
     };
 
     const handleImage = (e) => {
@@ -75,7 +76,7 @@ const AddService = () => {
                                 </div>
                                 <div className="row">
                                     <div className="col-md-12 text-center">
-                                        <input className={btnEnable ? "btn btn-danger" : "btn btn-danger disabled"} type="submit" value="Add Service" />
+                                        <input className={btnEnable ? "btn btn-danger" : "btn btn-danger waiting disabled"} type="submit" value="Add Service" />
                                     </div>
                                 </div>
                             </form>

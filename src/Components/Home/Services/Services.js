@@ -1,28 +1,20 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Badge } from 'react-bootstrap';
-import serviceImg from '../../../images/serviceImg';
 import ServiceCard from './ServiceCard/ServiceCard';
 
-const servicesList = [
-    {
-        serviceName: 'Exterior Painting',
-        serviceImg: serviceImg,
-        serviceDesc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis'
-    },
-    {
-        serviceName: 'Exterior Painting',
-        serviceImg: serviceImg,
-        serviceDesc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis'
-    },
-    {
-        serviceName: 'Exterior Painting',
-        serviceImg: serviceImg,
-        serviceDesc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis'
-    }
-
-]
-
 const Services = () => {
+
+    const [services, setServices] = useState([])
+
+    useEffect(() => {
+        fetch('http://localhost:5000/services')
+            .then(res => res.json())
+            .then(data => {
+                setServices(data);
+            })
+    }, [])
+
+
     return (
         <section className="mt-5" >
             <div className="container">
@@ -32,7 +24,7 @@ const Services = () => {
                         <h1 className="text-center mt-3" >Let's Choose <br /> Available Services</h1>
                     </div>
                     {
-                        servicesList.map(each => <ServiceCard serviceInfo={each} ></ServiceCard>)
+                        services.map(each => <ServiceCard key={each._id} serviceInfo={each} ></ServiceCard>)
                     }
                 </div>
             </div>
