@@ -1,34 +1,20 @@
-import React from 'react';
-import serviceImg from '../../../images/serviceExterior';
+import React, { useContext, useEffect, useState } from 'react';
+import { UserContext } from '../../../App';
 import Sidebar from '../Sidebar/Sidebar';
 import BookingCard from './BookingCard';
 
-const bookings = [
-    {
-        serviceName: 'Exterior Painting',
-        serviceImg: serviceImg,
-        serviceDesc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis',
-        status: 'Done',
-        color: 'success'
-    },
-    {
-        serviceName: 'Exterior Painting',
-        serviceImg: serviceImg,
-        serviceDesc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis',
-        status: 'Pending',
-        color: 'danger'
-    },
-    {
-        serviceName: 'Exterior Painting',
-        serviceImg: serviceImg,
-        serviceDesc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis',
-        status: 'On Going',
-        color: 'warning'
-    }
-
-]
 
 const BookingList = () => {
+
+    const [bookings, setBookings] = useState([]);
+    const [{ email }] = useContext(UserContext);
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/userOrder/${email}`)
+            .then(res => res.json())
+            .then(data => setBookings(data))
+    }, [email])
+
     return (
         <section>
             <div className="row mr-0">
