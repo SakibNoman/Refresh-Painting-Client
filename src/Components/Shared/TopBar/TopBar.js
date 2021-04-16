@@ -8,7 +8,7 @@ const TopBar = () => {
     const [{ isSignedIn, name, photoURL }] = useContext(UserContext);
 
     return (
-        <Navbar bg="light" expand="lg">
+        <Navbar className="sticky-top" bg="light" expand="lg">
             <Navbar.Brand as={Link} to="/">
                 <img
                     alt=""

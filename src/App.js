@@ -50,7 +50,7 @@ function App() {
             <Projects></Projects>
             <Footer></Footer>
           </Route>
-          <Route path="/dashboard/book" >
+          <Route path="/dashboard/book/:id" >
             <Book></Book>
           </Route>
           <Route path="/dashboard/bookingList" >

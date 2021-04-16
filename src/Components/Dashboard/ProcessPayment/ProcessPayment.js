@@ -1,29 +1,42 @@
-import { CardElement, Elements } from '@stripe/react-stripe-js';
-import { loadStripe } from '@stripe/stripe-js';
-import React from 'react';
+import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
+import React, { useEffect, useState } from 'react';
 
-const stripePromise = loadStripe('pk_test_51IgmxKGYUTY8stRJWvUVGBwXaBeXAgfhaRMwBvdY98QSZyhULM4NsTUmNexGUexE6oN49XgK4jzihrf6lyWsWcIg00JDql9uVz');
+const ProcessPayment = (props) => {
+    const [paymentSuccess, setPaymentSuccess] = useState(null);
+    const [paymentError, setPaymentError] = useState(null);
+    const stripe = useStripe();
+    const elements = useElements();
 
-const ProcessPayment = () => {
+    useEffect(() => {
+        props.markAsPaid(paymentSuccess);
+    }, [paymentSuccess])
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        const { error, paymentMethod } = await stripe.createPaymentMethod({
+            type: 'card',
+            card: elements.getElement(CardElement),
+        });
+
+        if (error) {
+            setPaymentError(error);
+            setPaymentSuccess(null);
+
+        } else {
+            setPaymentSuccess(paymentMethod);
+            setPaymentError(null);
+        }
+    };
+
     return (
-        <Elements stripe={stripePromise}>
-            <CardElement
-                options={{
-                    style: {
-                        base: {
-                            fontSize: '16px',
-                            color: '#424770',
-                            '::placeholder': {
-                                color: '#aab7c4',
-                            },
-                        },
-                        invalid: {
-                            color: '#9e2146',
-                        },
-                    },
-                }}
-            />
-        </Elements>
+        <form onSubmit={handleSubmit}>
+            <CardElement />
+            <button className="btn btn-danger my-3 px-5" type="submit" disabled={!stripe}>
+                Pay
+        </button>
+            {paymentError && <p style={{ color: "red" }}>Failed, {paymentError.message}</p>}
+            {paymentSuccess && <p style={{ color: "green" }}>Payment Successful</p>}
+        </form>
     );
 };
 
