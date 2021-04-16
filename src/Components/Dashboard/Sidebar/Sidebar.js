@@ -1,4 +1,4 @@
-import { faCartPlus, faHome, faList, faMailBulk } from '@fortawesome/free-solid-svg-icons';
+import { faCartPlus, faHome, faList, faMailBulk, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Link } from 'react-router-dom';
@@ -27,6 +27,11 @@ const Sidebar = () => {
                 <li>
                     <Link to="/dashboard/review" className="text-white">
                         <FontAwesomeIcon icon={faMailBulk} /> <span>Review</span>
+                    </Link>
+                </li>
+                <li>
+                    <Link to="/dashboard/addService" className="text-white">
+                        <FontAwesomeIcon icon={faPlus} /> <span>Add Service</span>
                     </Link>
                 </li>
             </ul>

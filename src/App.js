@@ -5,6 +5,7 @@ import {
   Route, Switch
 } from "react-router-dom";
 import './App.css';
+import AddService from "./Components/Dashboard/AddService/AddService";
 import Book from "./Components/Dashboard/Book/Book";
 import BookingList from "./Components/Dashboard/BookingList/BookingList";
 import Review from "./Components/Dashboard/Review/Review";
@@ -55,6 +56,9 @@ function App() {
           </Route>
           <Route path="/dashboard/review" >
             <Review></Review>
+          </Route>
+          <Route path="/dashboard/addService" >
+            <AddService></AddService>
           </Route>
         </Switch>
       </Router>

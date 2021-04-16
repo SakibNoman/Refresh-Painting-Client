@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Card } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 
 const ServiceCard = ({ serviceInfo }) => {
     const { serviceName, serviceImg, serviceDesc } = serviceInfo;
@@ -15,7 +15,6 @@ const ServiceCard = ({ serviceInfo }) => {
                     <Card.Text>
                         {serviceDesc}
                     </Card.Text>
-                    <Button variant="light" className="text-danger" >Learn More</Button>
                 </Card.Body>
             </Card>
         </div>

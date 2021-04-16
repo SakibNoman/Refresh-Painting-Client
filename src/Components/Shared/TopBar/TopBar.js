@@ -5,7 +5,7 @@ import { UserContext } from '../../../App';
 import logo from '../../../images/Refresh.png';
 
 const TopBar = () => {
-    const [{ isSignedIn, name }] = useContext(UserContext);
+    const [{ isSignedIn, name, photoURL }] = useContext(UserContext);
 
     return (
         <Navbar bg="light" expand="lg">
@@ -25,10 +25,16 @@ const TopBar = () => {
                     <Nav.Link as={Link} className="mr-4" to="/about">About</Nav.Link>
                     <Nav.Link as={Link} className="mr-4" to="/services">Services</Nav.Link>
                     <Nav.Link as={Link} className="mr-4" to="/projects">Project</Nav.Link>
-                    <Nav.Link as={Link} className="mr-4" to="/dashboard/bookingList">Dashboard</Nav.Link>
+                    {<Nav.Link as={Link} className="mr-4" to="/dashboard/bookingList">Dashboard</Nav.Link>}
                 </Nav>
                 {
-                    isSignedIn ? <Navbar.Brand>{name}</Navbar.Brand> : <Button as={Link} to="/login" variant="outline-danger">Login</Button>
+                    isSignedIn ? <Navbar.Brand><img
+                        alt=""
+                        src={photoURL}
+                        width="30"
+                        height="30"
+                        className="d-inline-block align-top rounded-circle"
+                    />{' '} {name}</Navbar.Brand> : <Button as={Link} to="/login" variant="outline-danger">Login</Button>
                 }
             </Navbar.Collapse>
         </Navbar>
