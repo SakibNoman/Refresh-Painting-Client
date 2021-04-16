@@ -1,4 +1,5 @@
 import React from 'react';
+import ProcessPayment from '../ProcessPayment/ProcessPayment';
 import Sidebar from '../Sidebar/Sidebar';
 
 const Book = () => {
@@ -9,7 +10,8 @@ const Book = () => {
                     <Sidebar></Sidebar>
                 </div>
                 <div className="col-md-10 col-sm-12 col-12 d-flex justify-content-center">
-                    <h1>Payment system and form</h1>
+                    <h3>Please Pay</h3>
+                    <ProcessPayment></ProcessPayment>
                 </div>
             </div>
         </section>

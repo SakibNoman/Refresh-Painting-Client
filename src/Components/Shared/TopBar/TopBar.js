@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Button, Nav, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { UserContext } from '../../../App';
 import logo from '../../../images/Refresh.png';
 
 const TopBar = () => {
+    const [{ isSignedIn, name }] = useContext(UserContext);
+
     return (
         <Navbar bg="light" expand="lg">
             <Navbar.Brand as={Link} to="/">
@@ -24,7 +27,9 @@ const TopBar = () => {
                     <Nav.Link as={Link} className="mr-4" to="/projects">Project</Nav.Link>
                     <Nav.Link as={Link} className="mr-4" to="/dashboard/bookingList">Dashboard</Nav.Link>
                 </Nav>
-                <Button as={Link} to="/login" variant="outline-danger">Login</Button>
+                {
+                    isSignedIn ? <Navbar.Brand>{name}</Navbar.Brand> : <Button as={Link} to="/login" variant="outline-danger">Login</Button>
+                }
             </Navbar.Collapse>
         </Navbar>
     );
