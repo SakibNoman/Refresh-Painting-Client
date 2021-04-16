@@ -1,10 +1,33 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from "react-hook-form";
+import { UserContext } from '../../../App';
 import Sidebar from '../Sidebar/Sidebar';
 
 const Review = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const onSubmit = data => console.log(data);
+    const [{ photoURL }] = useContext(UserContext);
+    const onSubmit = (data, e) => {
+        const eventValue = {
+            name: data.name,
+            post: data.designation,
+            photo: photoURL,
+            review: data.description,
+            rating: data.rating
+        }
+
+        fetch('http://localhost:5000/addReview', {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(eventValue)
+        })
+            .then(res => {
+                console.log("Success");
+                alert("Uploaded Successfully")
+            })
+        e.target.reset()
+    };
     return (
         <section>
             <div className="row mr-0">
@@ -16,18 +39,18 @@ const Review = () => {
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <div className="row">
                                 <div className="col-md-12">
-                                    <input className="form-control mb-4 border-0 bg-light" placeholder="Your Name" {...register("example")} />
+                                    <input className="form-control mb-4 border-0 bg-light" placeholder="Your Name" {...register("name")} />
                                 </div>
                                 <div className="col-md-12">
-                                    <input className="form-control mb-4 border-0 bg-light" placeholder="Company's name, Designation" {...register("example")} />
+                                    <input className="form-control mb-4 border-0 bg-light" placeholder="Company's name, Designation" {...register("designation")} />
                                 </div>
                                 <div className="col-md-12">
-                                    <input type="number" min="0" max="5" className="form-control mb-4 border-0 bg-light" placeholder="Rating out of 5" {...register("example")} />
+                                    <input type="number" min="0" max="5" className="form-control mb-4 border-0 bg-light" placeholder="Rating out of 5" {...register("rating")} />
                                 </div>
                             </div>
                             <div className="row">
                                 <div className="col-md-12">
-                                    <textarea rows="5" style={{ resize: 'none' }} className="form-control mb-4 border-0 bg-light" placeholder="Description" {...register("example")} />
+                                    <textarea rows="5" style={{ resize: 'none' }} className="form-control mb-4 border-0 bg-light" placeholder="Description" {...register("description")} />
                                 </div>
                             </div>
                             <div className="row">

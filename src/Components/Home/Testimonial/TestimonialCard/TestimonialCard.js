@@ -21,7 +21,7 @@ const TestimonialCard = ({ testimonialInfo }) => {
                         {review}
                     </Card.Text>
                     <StarRatings
-                        rating={rating}
+                        rating={Number(rating)}
                         starDimension="25px"
                         starSpacing="5px"
                         starRatedColor="#FFAC0C"

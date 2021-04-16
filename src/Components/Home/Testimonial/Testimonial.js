@@ -1,32 +1,16 @@
-import React from 'react';
-import reviewer from '../../../images/reviewer.png';
+import React, { useEffect, useState } from 'react';
 import TestimonialCard from './TestimonialCard/TestimonialCard';
 
-const testimonialInfo = [
-    {
-        name: 'Nash Patrik',
-        post: 'CEO, Manpol',
-        photo: reviewer,
-        review: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus commodo ipsum duis laoreet maecenas. Feugiat",
-        rating: 5
-    },
-    {
-        name: 'Nash Patrik',
-        post: 'CEO, Manpol',
-        photo: reviewer,
-        review: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus commodo ipsum duis laoreet maecenas. Feugiat",
-        rating: 5
-    },
-    {
-        name: 'Nash Patrik',
-        post: 'CEO, Manpol',
-        photo: reviewer,
-        review: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus commodo ipsum duis laoreet maecenas. Feugiat",
-        rating: 5
-    }
-]
-
 const Testimonial = () => {
+
+    const [testimonialInfo, setTestimonialInfo] = useState([])
+
+    useEffect(() => {
+        fetch('http://localhost:5000/reviews')
+            .then(res => res.json())
+            .then(data => setTestimonialInfo(data))
+    }, [])
+
     return (
         <section className="mt-5" >
             <div className="container">
