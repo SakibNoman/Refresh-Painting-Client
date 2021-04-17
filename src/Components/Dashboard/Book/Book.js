@@ -27,7 +27,7 @@ const Book = () => {
 
     //finding order info
     useEffect(() => {
-        fetch(`http://localhost:5000/singleService/${id}`)
+        fetch(`https://morning-escarpment-96840.herokuapp.com/singleService/${id}`)
             .then(res => res.json())
             .then(data => {
                 const newOrderInfo = { ...orderInfo }
@@ -42,7 +42,7 @@ const Book = () => {
     //checking if payment clear and placing order
     const markAsPaid = (paymentInfo) => {
         if (paymentInfo !== null) {
-            fetch('http://localhost:5000/addOrder', {
+            fetch('https://morning-escarpment-96840.herokuapp.com/addOrder', {
                 method: "POST",
                 headers: {
                     'content-type': 'application/json'

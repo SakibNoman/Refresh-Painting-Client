@@ -8,7 +8,7 @@ const OrderList = () => {
     const [refresh, setRefresh] = useState(false)
 
     useEffect(() => {
-        fetch('http://localhost:5000/orders')
+        fetch('https://morning-escarpment-96840.herokuapp.com/orders')
             .then(res => res.json())
             .then(data => setOrders(data))
     }, [refresh])
@@ -31,7 +31,7 @@ const OrderList = () => {
             color: color
         }
 
-        fetch(`http://localhost:5000/updateStatus/${id}`, {
+        fetch(`https://morning-escarpment-96840.herokuapp.com/updateStatus/${id}`, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(eventValue)

@@ -14,7 +14,7 @@ const Login = () => {
     const { email } = loggedInUser;
 
     useEffect(() => {
-        fetch('http://localhost:5000/isAdmin', {
+        fetch('https://morning-escarpment-96840.herokuapp.com/isAdmin', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'

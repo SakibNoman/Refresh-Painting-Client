@@ -7,7 +7,7 @@ const ManageServiceCard = ({ serviceInfo }) => {
     const { serviceName, serviceImg, _id } = serviceInfo;
 
     const handleDelete = id => {
-        fetch(`http://localhost:5000/deleteService/${id}`, {
+        fetch(`https://morning-escarpment-96840.herokuapp.com/deleteService/${id}`, {
             method: "DELETE"
         })
             .then(res => res.json())

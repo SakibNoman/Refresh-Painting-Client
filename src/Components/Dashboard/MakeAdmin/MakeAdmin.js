@@ -9,7 +9,7 @@ const MakeAdmin = () => {
 
         const eventValue = { email: adminMail }
 
-        fetch('http://localhost:5000/addAdmin', {
+        fetch('https://morning-escarpment-96840.herokuapp.com/addAdmin', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'

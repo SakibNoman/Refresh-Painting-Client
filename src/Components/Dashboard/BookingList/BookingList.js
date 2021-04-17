@@ -10,7 +10,7 @@ const BookingList = () => {
     const [{ email }] = useContext(UserContext);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/userOrder/${email}`)
+        fetch(`https://morning-escarpment-96840.herokuapp.com/userOrder/${email}`)
             .then(res => res.json())
             .then(data => setBookings(data))
     }, [email])

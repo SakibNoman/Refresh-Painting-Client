@@ -24,7 +24,7 @@ const AddService = () => {
             serviceDesc: data.description
         }
 
-        fetch('http://localhost:5000/addService', {
+        fetch('https://morning-escarpment-96840.herokuapp.com/addService', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'
