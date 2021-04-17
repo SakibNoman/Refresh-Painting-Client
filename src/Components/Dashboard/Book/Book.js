@@ -12,6 +12,8 @@ const Book = () => {
 
     const [{ name, email }] = useContext(UserContext);
     const { id } = useParams()
+
+    //order information
     const [orderInfo, setOrderInfo] = useState({
         fullname: name,
         email: email,
@@ -23,6 +25,7 @@ const Book = () => {
         image: ''
     })
 
+    //finding order info
     useEffect(() => {
         fetch(`http://localhost:5000/singleService/${id}`)
             .then(res => res.json())
@@ -36,6 +39,7 @@ const Book = () => {
             })
     }, [id])
 
+    //checking if payment clear and placing order
     const markAsPaid = (paymentInfo) => {
         if (paymentInfo !== null) {
             fetch('http://localhost:5000/addOrder', {
@@ -47,7 +51,7 @@ const Book = () => {
             })
                 .then(res => {
                     console.log("Success");
-                    alert("Uploaded Successfully")
+                    alert("Ordered Successfully")
                 })
         }
     }

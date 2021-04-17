@@ -18,7 +18,6 @@ const ManageServiceCard = ({ serviceInfo }) => {
     return (
         <div className="col-md-4 d-flex justify-content-center mb-5">
             <Card border="light" className="shadow flex-row p-3 align-items-center mt-5" style={{ width: '18rem' }}>
-                {/* <div><Card.Title className="text-center text-danger py-4" >{serviceName}</Card.Title></div> */}
                 <div> <img style={{ width: '40px' }} src={serviceImg} alt="" /> </div>
                 <div> <h5 className="text-center text-danger ml-3 " > {serviceName} </h5>  </div>
                 <div><FontAwesomeIcon style={{ cursor: "pointer" }} onClick={() => handleDelete(`${_id}`)} className="ml-3" color="red" title="Remove" icon={faTrash} /></div>

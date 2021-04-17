@@ -4,7 +4,6 @@ import Sidebar from '../Sidebar/Sidebar';
 const MakeAdmin = () => {
 
     const [adminMail, setAdminMail] = useState('')
-    console.log(adminMail);
 
     const handleSubmit = () => {
 
@@ -18,7 +17,7 @@ const MakeAdmin = () => {
             body: JSON.stringify(eventValue)
         })
             .then(res => {
-                console.log("Success");
+
                 alert("Admin added successfully")
             })
 

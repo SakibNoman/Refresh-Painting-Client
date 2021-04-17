@@ -13,7 +13,7 @@ const Footer = () => {
                     </div>
                     <div className="col-md-2">
                         <h5 className="mb-4 mt-md-0 mt-4">Company</h5>
-                        <p>About</p>
+                        <p >About</p>
                         <p>Project</p>
                         <p>Our Team</p>
                         <p>Terms & Condition</p>
@@ -21,7 +21,7 @@ const Footer = () => {
                     </div>
                     <div className="col-md-2">
                         <h5 className="mb-4 mt-md-0 mt-4">Quick Links</h5>
-                        <p>Rentals</p>
+                        <p>Services</p>
                         <p>Sales</p>
                         <p>Contact</p>
                         <p>Our Blog</p>
