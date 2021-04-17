@@ -3,10 +3,20 @@ import { useForm } from "react-hook-form";
 import Sidebar from '../Sidebar/Sidebar';
 
 const AddService = () => {
+
+    //react hook form
     const { register, handleSubmit, formState: { errors } } = useForm();
+
+    //image url state
     const [imageUrl, setImageUrl] = useState('');
+
+    //if image uploaded and ready to upload service
     const [btnEnable, setBtnEnable] = useState(false);
+
+    //upload service
     const onSubmit = (data, e) => {
+
+        //service info object
         const eventValue = {
             serviceName: data.title,
             servicePrice: data.price,
@@ -22,12 +32,12 @@ const AddService = () => {
             body: JSON.stringify(eventValue)
         })
             .then(res => {
-                console.log("Success");
                 alert("Uploaded Successfully")
             })
         e.target.reset()
     };
 
+    //upload image ot third party and find link
     const handleImage = (e) => {
         const files = e.target.files[0];
         const imageData = new FormData();
@@ -46,7 +56,6 @@ const AddService = () => {
     }
 
     return (
-
         <section>
             <div className="row mr-0">
                 <div className="col-md-2 col-sm-6 col-12">

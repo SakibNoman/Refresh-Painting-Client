@@ -1,26 +1,13 @@
 import { faCartPlus, faHome, faList, faMailBulk, faPlus, faTh, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { UserContext } from '../../../App';
 import './Sidebar.css';
 
 const Sidebar = () => {
 
-    const [{ email }] = useContext(UserContext);
-    const [isAdmin, setIsAdmin] = useState(false)
-
-    useEffect(() => {
-        fetch('http://localhost:5000/isAdmin', {
-            method: "POST",
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify({ email: email })
-        })
-            .then(res => res.json())
-            .then(data => setIsAdmin(data))
-    }, [email])
+    const [{ isAdmin }] = useContext(UserContext)
 
     return (
         <div className="sidebar bg-danger position-fixed d-flex flex-column justify-content-between col-md-2 py-5 px-4 h-100">
@@ -31,21 +18,23 @@ const Sidebar = () => {
                         <FontAwesomeIcon icon={faHome} /> <span>Home</span>
                     </Link>
                 </li>
-                <li>
-                    <Link to="/services" className="text-white">
-                        <FontAwesomeIcon icon={faCartPlus} /> <span>Book</span>
-                    </Link>
-                </li>
-                <li>
-                    <Link to="/dashboard/bookingList" className="text-white">
-                        <FontAwesomeIcon icon={faList} /> <span>Booking list</span>
-                    </Link>
-                </li>
-                <li>
-                    <Link to="/dashboard/review" className="text-white">
-                        <FontAwesomeIcon icon={faMailBulk} /> <span>Review</span>
-                    </Link>
-                </li>
+                {!isAdmin && <div>
+                    <li>
+                        <Link to="/services" className="text-white">
+                            <FontAwesomeIcon icon={faCartPlus} /> <span>Book</span>
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/dashboard/bookingList" className="text-white">
+                            <FontAwesomeIcon icon={faList} /> <span>Booking list</span>
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/dashboard/review" className="text-white">
+                            <FontAwesomeIcon icon={faMailBulk} /> <span>Review</span>
+                        </Link>
+                    </li>
+                </div>}
                 {isAdmin && <div>
                     <li>
                         <Link to="/dashboard/addService" className="text-white">

@@ -16,6 +16,7 @@ import Home from "./Components/Home/Home/Home";
 import Projects from "./Components/Home/Projects/Projects";
 import Services from "./Components/Home/Services/Services";
 import Login from "./Components/Login/Login";
+import PrivateRoute from "./Components/Login/PrivateRoute";
 import Footer from "./Components/Shared/Footer/Footer";
 import TopBar from "./Components/Shared/TopBar/TopBar";
 
@@ -23,6 +24,8 @@ export const UserContext = createContext();
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState({});
+
+
   return (
     <UserContext.Provider value={[loggedInUser, setLoggedInUser]} >
       <Router>
@@ -50,27 +53,27 @@ function App() {
             <Projects></Projects>
             <Footer></Footer>
           </Route>
-          <Route path="/dashboard/book/:id" >
+          <PrivateRoute path="/dashboard/book/:id" >
             <Book></Book>
-          </Route>
-          <Route path="/dashboard/bookingList" >
+          </PrivateRoute>
+          <PrivateRoute path="/dashboard/bookingList" >
             <BookingList></BookingList>
-          </Route>
-          <Route path="/dashboard/review" >
+          </PrivateRoute>
+          <PrivateRoute path="/dashboard/review" >
             <Review></Review>
-          </Route>
-          <Route path="/dashboard/addService" >
+          </PrivateRoute>
+          <PrivateRoute path="/dashboard/addService" >
             <AddService></AddService>
-          </Route>
-          <Route path="/dashboard/manageServices" >
+          </PrivateRoute>
+          <PrivateRoute path="/dashboard/manageServices" >
             <MangeServices></MangeServices>
-          </Route>
-          <Route path="/dashboard/makeAdmin" >
+          </PrivateRoute>
+          <PrivateRoute path="/dashboard/makeAdmin" >
             <MakeAdmin></MakeAdmin>
-          </Route>
-          <Route path="/dashboard/orderList" >
+          </PrivateRoute>
+          <PrivateRoute path="/dashboard/orderList" >
             <OrderList></OrderList>
-          </Route>
+          </PrivateRoute>
         </Switch>
       </Router>
     </UserContext.Provider>

@@ -1,6 +1,7 @@
 import firebase from "firebase/app";
 import "firebase/auth";
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { useHistory, useLocation } from "react-router";
 import { UserContext } from "../../App";
 import firebaseConfig from './firebase.config';
 import './Login.css';
@@ -9,6 +10,28 @@ const Login = () => {
 
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     const [isSignedIn, setIsSignedIn] = useState(false);
+
+    const { email } = loggedInUser;
+
+    useEffect(() => {
+        fetch('http://localhost:5000/isAdmin', {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({ email: email })
+        })
+            .then(res => res.json())
+            .then(data => {
+                const newLoggedInUser = { ...loggedInUser }
+                newLoggedInUser.isAdmin = data;
+                setLoggedInUser(newLoggedInUser)
+            })
+    }, [email])
+
+    let history = useHistory();
+    let location = useLocation();
+    let { from } = location.state || { from: { pathname: "/" } };
 
     if (firebase.apps.length === 0) {
         firebase.initializeApp(firebaseConfig);
@@ -19,8 +42,13 @@ const Login = () => {
         firebase.auth().signInWithPopup(provider).then(function (result) {
             const { displayName, email, photoURL } = result.user;
             setIsSignedIn(true)
-            const signedInUser = { name: displayName, email, photoURL, isSignedIn: true }
+            const signedInUser = { ...loggedInUser }
+            signedInUser.name = displayName;
+            signedInUser.email = email;
+            signedInUser.photoURL = photoURL;
+            signedInUser.isSignedIn = true
             setLoggedInUser(signedInUser)
+            history.replace(from);
         }).catch(function (error) {
             const errorMessage = error.message;
             console.log(errorMessage);
