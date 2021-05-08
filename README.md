@@ -1,12 +1,18 @@
 # REFRESH - a painting service application
 
-## Description
+#### [Live Preview](https://refresh-painting.web.app/)
 
-This is a single page application (SPA) where has multiple functionalities and feature for admin and user both.
-<br><br>
-Admin can add services, manage services, manage orders, and also add another admin to control these services.
-<br> <br>
-User can order services, post review, track their order status. They can also pay through online payment system.
+#### [Server Side Repository](https://github.com/Porgramming-Hero-web-course/complete-website-server-SakibNoman)
+
+### Features
+
+- User can take different services as their need
+- User can track status of their taken services
+- can see all order history
+- pay online through credit card
+- Admin can add new service and delete service that no longer available
+- Admin can view all order of services and change status of services
+- Admin can add new admin
 
 ## Tools I used
 
@@ -17,8 +23,6 @@ User can order services, post review, track their order status. They can also pa
 - React Router
 - Stripe.JS
 - Firebase
-- Context API
-
-## [Live Preview](https://refresh-painting.web.app/)
-
-## [Server Side Repository](https://github.com/Porgramming-Hero-web-course/complete-website-server-SakibNoman)
+- React Circular Progressbar
+- React hook form
+- React Star Rating
