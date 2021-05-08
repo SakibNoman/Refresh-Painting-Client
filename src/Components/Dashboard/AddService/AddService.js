@@ -66,21 +66,24 @@ const AddService = () => {
                         <div className="col-md-6">
                             <form onSubmit={handleSubmit(onSubmit)}>
                                 <div className="row">
-                                    <div className="col-md-12">
-                                        <input className="form-control mb-4 border-0 bg-light" placeholder="Service Title" {...register("title")} />
+                                    <div className="col-md-12 mb-4">
+                                        <input className="form-control border-0 bg-light" placeholder="Service Title" {...register("title", { required: true })} />
+                                        {errors.title && <span className="text-danger" >* Title is required</span>}
                                     </div>
                                 </div>
                                 <div className="row">
-                                    <div className="col-md-6">
-                                        <input className="form-control mb-4 border-0 bg-light" placeholder="Service Price" {...register("price")} />
+                                    <div className="col-md-6 mb-4">
+                                        <input className="form-control  border-0 bg-light" placeholder="Service Price" {...register("price", { required: true })} />
+                                        {errors.price && <span className="text-danger" >* Price is required</span>}
                                     </div>
                                     <div className="col-md-6">
                                         <input onChange={handleImage} type="file" className="form-control mb-4 border-0 bg-light" />
                                     </div>
                                 </div>
                                 <div className="row">
-                                    <div className="col-md-12">
-                                        <textarea rows="5" style={{ resize: 'none' }} className="form-control mb-4 border-0 bg-light" placeholder="Description" {...register("description")} />
+                                    <div className="col-md-12 ">
+                                        <textarea rows="5" style={{ resize: 'none' }} className="form-control  border-0 bg-light" placeholder="Description" {...register("description", { required: true })} />
+                                        {errors.description && <span className="text-danger" >* Description is required</span>}
                                     </div>
                                 </div>
                                 <div className="row">
