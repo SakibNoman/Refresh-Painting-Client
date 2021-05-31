@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Badge } from 'react-bootstrap';
 import Progress from './Progress';
 
@@ -26,6 +26,15 @@ const skillInfo = [
 ]
 
 const About = () => {
+
+    useEffect(() => {
+        window.scrollTo({
+            top: 10,
+            left: 10,
+            behavior: 'smooth'
+        });
+    }, [])
+
     return (
         <section className="my-5" >
             <div className="container">

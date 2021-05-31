@@ -29,6 +29,14 @@ const Login = () => {
             })
     }, [email])
 
+    useEffect(() => {
+        window.scrollTo({
+            top: 10,
+            left: 10,
+            behavior: 'smooth'
+        });
+    }, [])
+
     let history = useHistory();
     let location = useLocation();
     let { from } = location.state || { from: { pathname: "/" } };

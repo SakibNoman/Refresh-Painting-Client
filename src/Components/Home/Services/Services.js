@@ -7,6 +7,14 @@ const Services = () => {
     const [services, setServices] = useState([])
 
     useEffect(() => {
+        window.scrollTo({
+            top: 10,
+            left: 10,
+            behavior: 'smooth'
+        });
+    }, [])
+
+    useEffect(() => {
         fetch('https://morning-escarpment-96840.herokuapp.com/services')
             .then(res => res.json())
             .then(data => {

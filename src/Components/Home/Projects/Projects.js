@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Badge } from 'react-bootstrap';
 import projectChair from '../../../images/projectChair';
 import projectFurniture from '../../../images/projectFurniture';
@@ -36,6 +36,14 @@ const projectList = [
 ]
 
 const Projects = () => {
+
+    useEffect(() => {
+        window.scrollTo({
+            top: 10,
+            left: 10,
+            behavior: 'smooth'
+        });
+    }, [])
     return (
         <section className="mt-5" >
             <div className="container">
