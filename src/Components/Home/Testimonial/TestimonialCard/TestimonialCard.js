@@ -4,10 +4,10 @@ import StarRatings from 'react-star-ratings';
 
 const TestimonialCard = ({ testimonialInfo }) => {
     const { name, post, review, photo, rating } = testimonialInfo
-    const child = { width: `10em`, height: `210px` }
+    const child = { width: `350px`, height: `210px` }
 
     return (
-        <div style={child} className="col-md-4 d-flex justify-content-center mb-5">
+        <div style={child} className="d-flex justify-content-center mb-5">
             <Card border="light" className="shadow" style={{ width: '18rem' }}>
                 <div className="row mt-3" >
                     <div className="col-4 text-right">
