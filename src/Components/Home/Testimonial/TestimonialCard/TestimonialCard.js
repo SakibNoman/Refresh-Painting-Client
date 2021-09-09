@@ -7,7 +7,7 @@ const TestimonialCard = ({ testimonialInfo }) => {
     const child = { width: `350px`, height: `210px` }
 
     return (
-        <div style={child} className="d-flex justify-content-center mb-5">
+        <div style={child} className="d-flex justify-content-center mb-5 mx-3">
             <Card border="light" className="shadow" style={{ width: '18rem' }}>
                 <div className="row mt-3" >
                     <div className="col-4 text-right">
@@ -19,8 +19,10 @@ const TestimonialCard = ({ testimonialInfo }) => {
                     </div>
                 </div>
                 <Card.Body>
-                    <Card.Text>
-                        {review}
+                    <Card.Text >
+                        <div className="custom-review-card" >
+                            {review}
+                        </div>
                     </Card.Text>
                     <StarRatings
                         rating={Number(rating)}

@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import HorizontalScroll from 'react-scroll-horizontal';
+import Loader from '../../Shared/Loader/Loader';
 import TestimonialCard from './TestimonialCard/TestimonialCard';
 
 const Testimonial = () => {
-
-    const parent = { width: `60em`, height: `220px` }
 
     const [testimonialInfo, setTestimonialInfo] = useState([])
 
@@ -22,14 +20,15 @@ const Testimonial = () => {
                         <h3 className="text-center mt-3" >Testimonials</h3>
                     </div>
 
-                    <div style={parent} >
-                        <HorizontalScroll
-                            reverseScroll={true}
-                        >
+                    <div className="mb-5" >
+                        {testimonialInfo.length === 0 ? <Loader></Loader> : ""}
+                    </div>
+                    <div className="w-100 custom-overflow" >
+                        <div className="d-flex justify-content-between" >
                             {
                                 testimonialInfo.map(each => <TestimonialCard testimonialInfo={each} ></TestimonialCard>)
                             }
-                        </HorizontalScroll>
+                        </div>
                     </div>
 
                 </div>
