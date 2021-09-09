@@ -4,6 +4,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useForm } from "react-hook-form";
 import { useHistory, useLocation } from "react-router";
 import { UserContext } from "../../App";
+import loginImg from '../../images/loginImg.jpg';
 import firebaseConfig from './firebase.config';
 import './LoginCss.css';
 
@@ -97,8 +98,8 @@ const Login = () => {
 
 
     return (
-        <div style={{ height: '500px' }} className="row justify-content-center mx-0 align-items-center" >
-            <div className="col-md-4 align-items-center d-flex flex-column">
+        <div className="row justify-content-center mx-0 align-items-center mb-5" >
+            <div className="col-md-6 align-items-center d-flex flex-column">
                 <h3 >Welcome,</h3>
                 <p className="text-secondary" > Sign in to continue </p>
                 <small>1) Sign In with default id,password for testing admin panel</small>
@@ -128,6 +129,9 @@ const Login = () => {
 
                     <p className="btn-text"><b>Sign in with google</b></p>
                 </div>
+            </div>
+            <div className="col-md-6 d-md-block d-none" >
+                <img className="w-75" src={loginImg} alt="" />
             </div>
         </div>
     );

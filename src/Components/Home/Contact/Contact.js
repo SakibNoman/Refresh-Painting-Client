@@ -1,6 +1,7 @@
 import React from 'react';
 import { Badge } from 'react-bootstrap';
 import { useForm } from "react-hook-form";
+import contactImg from '../../../images/contactImg.jpg';
 
 const Contact = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -13,35 +14,43 @@ const Contact = () => {
                     <div className="col-12 mb-5" >
                         <h1 className="text-center mt-3" >Let us handle your <br /> project, professionally.</h1>
                     </div>
+
                     <div className="col-md-6">
-                        <form onSubmit={handleSubmit(onSubmit)}>
-                            <div className="row">
-                                <div className="col-md-6">
-                                    <input className="form-control mb-4 border-0 bg-light" placeholder="First Name" {...register("example")} />
+                        <img className="w-100" src={contactImg} alt="" />
+                    </div>
+                    <div className="col-md-6">
+
+                        <div className="col-md-12">
+                            <form onSubmit={handleSubmit(onSubmit)}>
+                                <div className="row">
+                                    <div className="col-md-6">
+                                        <input className="form-control mb-4 border-0 bg-light" placeholder="First Name" {...register("example")} />
+                                    </div>
+                                    <div className="col-md-6">
+                                        <input className="form-control mb-4 border-0 bg-light" placeholder="Last Name" {...register("example")} />
+                                    </div>
                                 </div>
-                                <div className="col-md-6">
-                                    <input className="form-control mb-4 border-0 bg-light" placeholder="Last Name" {...register("example")} />
+                                <div className="row">
+                                    <div className="col-md-6">
+                                        <input className="form-control mb-4 border-0 bg-light" placeholder="Email Address" {...register("example")} />
+                                    </div>
+                                    <div className="col-md-6">
+                                        <input className="form-control mb-4 border-0 bg-light" placeholder="Phone Number" {...register("example")} />
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="row">
-                                <div className="col-md-6">
-                                    <input className="form-control mb-4 border-0 bg-light" placeholder="Email Address" {...register("example")} />
+                                <div className="row">
+                                    <div className="col-md-12">
+                                        <textarea rows="5" style={{ resize: 'none' }} className="form-control mb-4 border-0 bg-light" placeholder="Your Message" {...register("example")} />
+                                    </div>
                                 </div>
-                                <div className="col-md-6">
-                                    <input className="form-control mb-4 border-0 bg-light" placeholder="Phone Number" {...register("example")} />
+                                <div className="row">
+                                    <div className="col-md-12 text-center">
+                                        <input className="btn btn-danger" type="submit" value="Send Message" />
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="row">
-                                <div className="col-md-12">
-                                    <textarea rows="5" style={{ resize: 'none' }} className="form-control mb-4 border-0 bg-light" placeholder="Your Message" {...register("example")} />
-                                </div>
-                            </div>
-                            <div className="row">
-                                <div className="col-md-12 text-center">
-                                    <input className="btn btn-danger" type="submit" value="Send Message" />
-                                </div>
-                            </div>
-                        </form>
+                            </form>
+                        </div>
+
                     </div>
                 </div>
             </div>
