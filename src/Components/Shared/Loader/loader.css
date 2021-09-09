@@ -8,8 +8,6 @@
   border-radius: 50%;
   -webkit-animation: spin 1.5s linear infinite;
   animation: spin 1.5s linear infinite;
-  left: 30%;
-  margin-top: 10px;
 }
 
 .reverse-spinner::before {

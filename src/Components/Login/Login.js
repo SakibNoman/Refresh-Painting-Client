@@ -125,7 +125,7 @@ const Login = () => {
                     {errors.password && <span className="text-danger" >Password is required</span>}
 
                     <input className="btn btn-outline-danger btn-block mt-3" type="submit" value="Login" />
-                    <div className={`flex align-items-center justify-content-center ${isLoading ? "d-block" : "d-none"}`} ><Loader></Loader></div>
+                    <div className={`justify-content-center mt-3 ${isLoading ? "d-flex" : "d-none"}`}> <Loader></Loader></div>
                 </form>
                 <p className="mt-3 text-secondary" >---------- or ----------</p>
                 <div onClick={handleGoogleSignIn} className="google-btn mt-1">

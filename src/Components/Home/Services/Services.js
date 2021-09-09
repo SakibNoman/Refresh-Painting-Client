@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Badge } from 'react-bootstrap';
+import Loader from '../../Shared/Loader/Loader';
 import ServiceCard from './ServiceCard/ServiceCard';
 
 const Services = () => {
@@ -30,6 +31,9 @@ const Services = () => {
                     <div className="col-12 mt-5" > <h3 className="text-center" ><Badge variant="danger" pill >Services</Badge></h3> </div>
                     <div className="col-12 mb-5" >
                         <h1 className="text-center mt-3" >Let's Choose <br /> Available Services</h1>
+                    </div>
+                    <div className="mb-5" >
+                        {services.length === 0 ? <Loader></Loader> : ""}
                     </div>
                     {
                         services.map(each => <ServiceCard key={each._id} serviceInfo={each} ></ServiceCard>)
