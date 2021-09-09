@@ -5,12 +5,13 @@ import { useForm } from "react-hook-form";
 import { useHistory, useLocation } from "react-router";
 import { UserContext } from "../../App";
 import firebaseConfig from './firebase.config';
-import './Login.css';
+import './LoginCss.css';
 
 const Login = () => {
 
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     const [isSignedIn, setIsSignedIn] = useState(false);
+    const [loginAsAdmin, setLoginAsAdmin] = useState(true);
 
     const { email } = loggedInUser;
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -88,6 +89,11 @@ const Login = () => {
         }
     }
 
+    // const handleChange = (e) => {
+    //     if (e.target.id === 'admin') setLoginAsAdmin(true);
+    //     if (e.target.id === 'user') setLoginAsAdmin(false);
+    // }
+
 
 
     return (
@@ -95,23 +101,31 @@ const Login = () => {
             <div className="col-md-4 align-items-center d-flex flex-column">
                 <h3 >Welcome,</h3>
                 <p className="text-secondary" > Sign in to continue </p>
-                <input type="radio" name="isAdmin" id="" /> <label htmlFor="admin"></label>
-                <input type="radio" name="isAdmin" id="" /> <label htmlFor="user"></label>
-                <form onSubmit={handleSubmit(onSubmit)}>
+                <small>1) Sign In with default id,password for testing admin panel</small>
+                <small>2) Sign In with google for testing user dashboard</small>
+                {/* <div>
+                    <input onChange={(e) => handleChange(e)} type="radio" name="isAdmin" id="admin" /> <label htmlFor="admin">Login as admin</label>
+                </div>
+                <div>
+                    <input onChange={(e) => handleChange(e)} type="radio" name="isAdmin" id="user" /> <label htmlFor="user">Login as user</label>
+                </div> */}
+                <form className="mt-3" onSubmit={handleSubmit(onSubmit)}>
                     {/* register your input into the hook by invoking the "register" function */}
-                    <input defaultValue="admin@refresh.web.app" {...register("email", { required: true })} />
-                    {errors.email && <span>Email is required</span>}
+                    <input className="form-control" defaultValue={loginAsAdmin ? "admin@refresh.web.app" : "user@refresh.web.app"} {...register("email", { required: true })} />
+                    {errors.email && <span className="text-danger" >Email is required</span>}
                     {/* include validation with required or other standard HTML validation rules */}
-                    <input defaultValue="refreshadmin" {...register("password", { required: true })} />
+                    <input className="form-control mt-3" type="password" defaultValue={loginAsAdmin ? "refreshadmin" : "refreshuser"} {...register("password", { required: true })} />
                     {/* errors will return when field validation fails  */}
-                    {errors.password && <span>Password is required</span>}
+                    {errors.password && <span className="text-danger" >Password is required</span>}
 
-                    <input type="submit" />
+                    <input className="btn btn-outline-danger btn-block mt-3" type="submit" value="Login" />
                 </form>
-                <div onClick={handleGoogleSignIn} className="google-btn mt-5">
+                <p className="mt-3 text-secondary" >---------- or ----------</p>
+                <div onClick={handleGoogleSignIn} className="google-btn mt-1">
                     <div className="google-icon-wrapper">
                         <img className="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="" />
                     </div>
+
                     <p className="btn-text"><b>Sign in with google</b></p>
                 </div>
             </div>
