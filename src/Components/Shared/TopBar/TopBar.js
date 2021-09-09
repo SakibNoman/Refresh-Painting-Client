@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Button, Nav, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { UserContext } from '../../../App';
@@ -6,9 +6,16 @@ import logo from '../../../images/Refresh.png';
 
 const TopBar = () => {
     const [{ isSignedIn, name, photoURL, isAdmin }] = useContext(UserContext);
+    const [offset, setOffset] = useState(0);
+
+    useEffect(() => {
+        window.onscroll = () => {
+            setOffset(window.pageYOffset)
+        }
+    }, []);
 
     return (
-        <Navbar className="sticky-top" bg="light" expand="lg">
+        <Navbar className={`sticky-top ${offset > 5 ? 'navbarCustom' : ''}`} bg="light" expand="lg">
             <Navbar.Brand as={Link} to="/">
                 <img
                     alt=""
@@ -17,7 +24,7 @@ const TopBar = () => {
                     height="30"
                     className="d-inline-block align-top"
                 />{' '}
-            REFRESH</Navbar.Brand>
+                REFRESH</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="ml-auto mr-5">

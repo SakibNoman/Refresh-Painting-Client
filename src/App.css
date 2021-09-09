@@ -20,3 +20,10 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #b30000;
 }
+.navbarCustom {
+  box-shadow: 0 0 8px #b300004b;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  transform: scaleZ(1.5);
+  transition: all 300ms ease-in-out;
+}

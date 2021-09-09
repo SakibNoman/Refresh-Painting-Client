@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { useHistory, useLocation } from "react-router";
 import { UserContext } from "../../App";
 import loginImg from '../../images/loginImg.jpg';
+import Loader from "../Shared/Loader/Loader";
 import firebaseConfig from './firebase.config';
 import './LoginCss.css';
 
@@ -13,6 +14,7 @@ const Login = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     const [isSignedIn, setIsSignedIn] = useState(false);
     const [loginAsAdmin, setLoginAsAdmin] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
 
     const { email } = loggedInUser;
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -71,6 +73,7 @@ const Login = () => {
 
     const onSubmit = (data) => {
         if (data.email && data.password) {
+            setIsLoading(true);
             firebase.auth().signInWithEmailAndPassword(data.email, data.password)
                 .then(res => {
                     const { displayName, email, photoURL } = res.user;
@@ -82,6 +85,7 @@ const Login = () => {
                     signedInUser.isSignedIn = true
                     setLoggedInUser(signedInUser)
                     history.replace(from);
+                    setIsLoading(false);
                 })
                 .catch(err => {
                     const errorMessage = err.message;
@@ -100,6 +104,7 @@ const Login = () => {
     return (
         <div className="row justify-content-center mx-0 align-items-center mb-5" >
             <div className="col-md-6 align-items-center d-flex flex-column">
+
                 <h3 >Welcome,</h3>
                 <p className="text-secondary" > Sign in to continue </p>
                 <small>1) Sign In with default id,password for testing admin panel</small>
@@ -120,6 +125,7 @@ const Login = () => {
                     {errors.password && <span className="text-danger" >Password is required</span>}
 
                     <input className="btn btn-outline-danger btn-block mt-3" type="submit" value="Login" />
+                    <div className={`flex align-items-center justify-content-center ${isLoading ? "d-block" : "d-none"}`} ><Loader></Loader></div>
                 </form>
                 <p className="mt-3 text-secondary" >---------- or ----------</p>
                 <div onClick={handleGoogleSignIn} className="google-btn mt-1">
