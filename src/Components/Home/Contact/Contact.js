@@ -1,7 +1,7 @@
 import React from 'react';
 import { Badge } from 'react-bootstrap';
 import { useForm } from "react-hook-form";
-import contactImg from '../../../images/contactImg.jpg';
+import contactImg from '../../../assets/images/contactImg.jpg';
 
 const Contact = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();

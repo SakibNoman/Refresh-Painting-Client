@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { Badge } from 'react-bootstrap';
-import projectChair from '../../../images/projectChair';
-import projectFurniture from '../../../images/projectFurniture';
-import projectInterior from '../../../images/projectInterior';
-import projectSpray from '../../../images/projectSpray';
-import projectWall from '../../../images/projectWall';
+import projectChair from '../../../assets/images/projectChair';
+import projectFurniture from '../../../assets/images/projectFurniture';
+import projectInterior from '../../../assets/images/projectInterior';
+import projectSpray from '../../../assets/images/projectSpray';
+import projectWall from '../../../assets/images/projectWall';
 import ProjectCard from './ProjectCard/ProjectCard';
 
 const projectList = [

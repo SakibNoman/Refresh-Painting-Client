@@ -3,8 +3,8 @@ import Footer from '../../Shared/Footer/Footer';
 import TopBar from '../../Shared/TopBar/TopBar';
 import About from '../About/About';
 import Contact from '../Contact/Contact';
+import Services from '../PaintingServices/PaintingServices';
 import Projects from '../Projects/Projects';
-import Services from '../Services/Services';
 import Testimonial from '../Testimonial/Testimonial';
 import TopBanner from '../TopBanner/TopBanner';
 

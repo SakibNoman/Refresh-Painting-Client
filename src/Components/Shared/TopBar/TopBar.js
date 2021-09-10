@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Button, Nav, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { UserContext } from '../../../App';
-import logo from '../../../images/Refresh.png';
+import logo from '../../../assets/images/Refresh.png';
 
 const TopBar = () => {
     const [{ isSignedIn, name, photoURL, isAdmin }] = useContext(UserContext);

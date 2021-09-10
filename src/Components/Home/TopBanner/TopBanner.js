@@ -2,7 +2,7 @@ import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import topBannerImg from '../../../images/topBanner.jpg';
+import topBannerImg from '../../../assets/images/topBanner.jpg';
 
 const TopBanner = () => {
     return (

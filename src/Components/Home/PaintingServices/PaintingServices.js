@@ -3,7 +3,7 @@ import { Badge } from 'react-bootstrap';
 import Loader from '../../Shared/Loader/Loader';
 import ServiceCard from './ServiceCard/ServiceCard';
 
-const Services = () => {
+const PaintingServices = () => {
 
     const [services, setServices] = useState([])
 
@@ -44,4 +44,4 @@ const Services = () => {
     );
 };
 
-export default Services;
+export default PaintingServices;
