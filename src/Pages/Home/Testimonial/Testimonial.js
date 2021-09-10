@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import Loader from '../../Shared/Loader/Loader';
-import TestimonialCard from './TestimonialCard/TestimonialCard';
+import Loader from '../../../Components/Shared/Loader/Loader';
+import TestimonialCard from '../../../Components/TestimonialCard/TestimonialCard';
+import { getReviews } from '../../../Services/UserServices';
 
 const Testimonial = () => {
 
     const [testimonialInfo, setTestimonialInfo] = useState([])
 
     useEffect(() => {
-        fetch('https://morning-escarpment-96840.herokuapp.com/reviews')
-            .then(res => res.json())
-            .then(data => setTestimonialInfo(data))
+        getReviews().then(data => setTestimonialInfo(data))
     }, [])
 
     return (

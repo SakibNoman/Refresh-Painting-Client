@@ -11,14 +11,14 @@ import MakeAdmin from "./Components/Dashboard/MakeAdmin/MakeAdmin";
 import MangeServices from "./Components/Dashboard/MangeServices/MangeServices";
 import OrderList from "./Components/Dashboard/OrderList/OrderList";
 import Review from "./Components/Dashboard/Review/Review";
-import About from "./Components/Home/About/About";
-import Home from "./Components/Home/Home/Home";
-import Services from "./Components/Home/PaintingServices/PaintingServices";
-import Projects from "./Components/Home/Projects/Projects";
-import Login from "./Components/Login/Login";
-import PrivateRoute from "./Components/Login/PrivateRoute";
 import Footer from "./Components/Shared/Footer/Footer";
 import TopBar from "./Components/Shared/TopBar/TopBar";
+import About from "./Pages/Home/About/About";
+import Home from "./Pages/Home/Home/Home";
+import Services from "./Pages/Home/PaintingServices/PaintingServices";
+import Projects from "./Pages/Home/Projects/Projects";
+import Login from "./Pages/Login/Login";
+import PrivateRoute from "./Pages/Login/PrivateRoute";
 
 export const UserContext = createContext();
 

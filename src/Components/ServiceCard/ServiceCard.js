@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import './ServiceCard.css';
+import '../../Styles/ServiceCard.css';
 
 const ServiceCard = ({ serviceInfo }) => {
     const { serviceName, serviceImg, serviceDesc, servicePrice, _id } = serviceInfo;

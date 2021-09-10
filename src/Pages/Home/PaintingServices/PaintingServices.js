@@ -1,26 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { Badge } from 'react-bootstrap';
-import Loader from '../../Shared/Loader/Loader';
-import ServiceCard from './ServiceCard/ServiceCard';
+import ServiceCard from '../../../Components/ServiceCard/ServiceCard';
+import Loader from '../../../Components/Shared/Loader/Loader';
+import { getPaintingServices } from '../../../Services/UserServices';
+import { scrollTo } from '../../../tools/scroll';
 
 const PaintingServices = () => {
 
     const [services, setServices] = useState([])
 
     useEffect(() => {
-        window.scrollTo({
-            top: 10,
-            left: 10,
-            behavior: 'smooth'
-        });
-    }, [])
-
-    useEffect(() => {
-        fetch('https://morning-escarpment-96840.herokuapp.com/services')
-            .then(res => res.json())
-            .then(data => {
-                setServices(data);
-            })
+        scrollTo(90, 20);
+        getPaintingServices().then(data => {
+            setServices(data);
+        })
     }, [])
 
 

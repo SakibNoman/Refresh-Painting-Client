@@ -1,0 +1,14 @@
+.shadow:hover .service-img {
+  animation-name: example;
+  animation-duration: 2000ms;
+  animation-iteration-count: infinite;
+}
+@keyframes example {
+  0%,
+  100% {
+    transform: rotate(30deg);
+  }
+  50% {
+    transform: rotate(-30deg);
+  }
+}

@@ -9,15 +9,15 @@ if (firebase.apps.length === 0) {
 }
 
 //Checking admin or not
-export const checkAdmin = (email) => {
-    return fetch('https://morning-escarpment-96840.herokuapp.com/isAdmin', {
+export const checkAdmin = async (email) => {
+    const res = await fetch('https://morning-escarpment-96840.herokuapp.com/isAdmin', {
         method: "POST",
         headers: {
             'content-type': 'application/json'
         },
         body: JSON.stringify({ email: email })
-    })
-        .then(res => res.json())
+    });
+    return await res.json();
 }
 
 

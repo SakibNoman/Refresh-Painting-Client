@@ -1,38 +1,14 @@
 import React, { useEffect } from 'react';
 import { Badge } from 'react-bootstrap';
-import Progress from './Progress';
+import Progress from '../../../Components/Progress';
+import { skillInfo } from '../../../Data/skillInfo';
+import { scrollTo } from '../../../tools/scroll';
 
-const skillInfo = [
-    {
-        perchant: 87,
-        name: 'Residential Painting',
-        pathColor: '#E30032'
-    },
-    {
-        perchant: 84,
-        name: 'Exterior Painting',
-        pathColor: '#2F80CD'
-    },
-    {
-        perchant: 89,
-        name: 'Interior Painting',
-        pathColor: '#8C00C6'
-    },
-    {
-        perchant: 67,
-        name: 'Others Painting',
-        pathColor: '#4EBDC5'
-    }
-]
 
 const About = () => {
 
     useEffect(() => {
-        window.scrollTo({
-            top: 10,
-            left: 10,
-            behavior: 'smooth'
-        });
+        scrollTo(10, 10);
     }, [])
 
     return (

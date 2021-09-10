@@ -3,9 +3,9 @@ import { useForm } from "react-hook-form";
 import { useHistory, useLocation } from "react-router";
 import { UserContext } from "../../App";
 import loginImg from '../../assets/images/loginImg.jpg';
+import Loader from "../../Components/Shared/Loader/Loader";
 import { checkAdmin, googleSignIn, signIn } from "../../Services/AuthServices";
 import '../../Styles/LoginCss.css';
-import Loader from "../Shared/Loader/Loader";
 
 
 const Login = () => {
