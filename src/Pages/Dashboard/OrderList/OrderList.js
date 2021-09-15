@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Table } from 'react-bootstrap';
 import Loader from '../../../Components/Shared/Loader/Loader';
+import { changeOrderStatus, getOrderList } from '../../../Services/DashboardServices';
 import Sidebar from '../Sidebar/Sidebar';
 
 const OrderList = () => {
@@ -9,8 +10,7 @@ const OrderList = () => {
     const [refresh, setRefresh] = useState(false)
 
     useEffect(() => {
-        fetch('https://morning-escarpment-96840.herokuapp.com/orders')
-            .then(res => res.json())
+        getOrderList()
             .then(data => {
                 data.reverse()
                 setOrders(data)
@@ -35,14 +35,10 @@ const OrderList = () => {
             color: color
         }
 
-        fetch(`https://morning-escarpment-96840.herokuapp.com/updateStatus/${id}`, {
-            method: 'PATCH',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(eventValue)
-        })
-            .then(res => res.json())
-            .then(data => data)
-        setRefresh(!refresh)
+        changeOrderStatus(id, eventValue)
+            .then(data => {
+                setRefresh(!refresh)
+            })
 
     }
 
