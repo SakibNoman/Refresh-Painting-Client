@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Loader from '../../Shared/Loader/Loader';
 import Sidebar from '../Sidebar/Sidebar';
 import ManageServiceCard from './ManageServiceCard';
 
@@ -21,9 +22,10 @@ const MangeServices = () => {
                     <Sidebar></Sidebar>
                 </div>
                 <div className="col-md-10 col-sm-12 col-12 d-flex justify-content-center">
-                    <div className="row container">
-                        {
+                    <div className={`row container justify-content-center ${services.length ? '' : 'mt-5'}`}>
+                        {services.length ?
                             services.map(each => <ManageServiceCard serviceInfo={each} ></ManageServiceCard>)
+                            : <Loader />
                         }
                     </div>
                 </div>

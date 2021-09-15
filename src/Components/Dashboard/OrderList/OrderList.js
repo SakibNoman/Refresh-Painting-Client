@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Table } from 'react-bootstrap';
+import Loader from '../../Shared/Loader/Loader';
 import Sidebar from '../Sidebar/Sidebar';
 
 const OrderList = () => {
@@ -10,7 +11,10 @@ const OrderList = () => {
     useEffect(() => {
         fetch('https://morning-escarpment-96840.herokuapp.com/orders')
             .then(res => res.json())
-            .then(data => setOrders(data))
+            .then(data => {
+                data.reverse()
+                setOrders(data)
+            })
     }, [refresh])
 
 
@@ -49,8 +53,8 @@ const OrderList = () => {
                     <Sidebar></Sidebar>
                 </div>
                 <div className="col-md-10 col-sm-12 col-12 d-flex justify-content-center">
-                    <div className="row container mt-5 ">
-                        <Table bordered variant="light" >
+                    <div className="row container mt-5 justify-content-center">
+                        {orders.length ? <Table bordered variant="light" >
                             <thead>
                                 <tr >
                                     <th>Name</th>
@@ -60,18 +64,19 @@ const OrderList = () => {
                                     <th>Status</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                {
-                                    orders.map(each => <tr style={{ height: '80px' }} ><td>{each.fullname}</td> <td> {each.email} </td><td>{each.service}</td><td>Credit Card</td><td>
-                                        <select name={each._id} value={each.status} onChange={e => handleChange(e)} className={`form-control w-75 border-0 text-${each.color}`} >
-                                            <option value="Pending">Pending</option>
-                                            <option value="On going">On going</option>
-                                            <option value="Done">Done</option>
-                                        </select>
-                                    </td> </tr>)
-                                }
+                            <tbody>{
+
+                                orders.map(each => <tr style={{ height: '80px' }} ><td>{each.fullname}</td> <td> {each.email} </td><td>{each.service}</td><td>Credit Card</td><td>
+                                    <select name={each._id} value={each.status} onChange={e => handleChange(e)} className={`form-control w-75 border-0 text-${each.color}`} >
+                                        <option value="Pending">Pending</option>
+                                        <option value="On going">On going</option>
+                                        <option value="Done">Done</option>
+                                    </select>
+                                </td> </tr>)
+                            }
                             </tbody>
-                        </Table>
+
+                        </Table> : <Loader />}
                     </div>
                 </div>
             </div>

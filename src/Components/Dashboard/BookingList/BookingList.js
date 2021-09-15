@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { UserContext } from '../../../App';
+import Loader from '../../Shared/Loader/Loader';
 import Sidebar from '../Sidebar/Sidebar';
 import BookingCard from './BookingCard';
 
@@ -12,7 +13,10 @@ const BookingList = () => {
     useEffect(() => {
         fetch(`https://morning-escarpment-96840.herokuapp.com/userOrder/${email}`)
             .then(res => res.json())
-            .then(data => setBookings(data))
+            .then(data => {
+                data.reverse()
+                setBookings(data)
+            })
     }, [email])
 
     return (
@@ -22,9 +26,10 @@ const BookingList = () => {
                     <Sidebar></Sidebar>
                 </div>
                 <div className="col-md-10 col-sm-12 col-12 d-flex justify-content-center">
-                    <div className="row container">
-                        {
+                    <div className={`row container justify-content-center ${bookings.length ? "" : "mt-5"}`}>
+                        {bookings.length ?
                             bookings.map(each => <BookingCard bookingInfo={each} ></BookingCard>)
+                            : <Loader />
                         }
                     </div>
                 </div>
