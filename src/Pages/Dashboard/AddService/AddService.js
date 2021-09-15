@@ -73,7 +73,7 @@ const AddService = () => {
                 <div className="col-md-10 col-sm-12 col-12">
                     <div className="d-flex justify-content-between align-items-center" >
                         <h1 className="text-secondary ml-5 mt-5" > <FontAwesomeIcon icon={faPlus} /> Add Services</h1>
-                        <h3 style={{ zIndex: '1111' }} onClick={() => sideBarInfo.changeSideBar()} ><FontAwesomeIcon icon={faOpenid} /></h3>
+                        <h3 className="d-none" style={{ zIndex: '1111' }} onClick={() => sideBarInfo.changeSideBar()} ><FontAwesomeIcon icon={faOpenid} /></h3>
                     </div>
                     <div className="row container mt-2 pt-5 ">
                         <div className="col-md-6">

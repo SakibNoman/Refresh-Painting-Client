@@ -26,7 +26,7 @@ const MangeServices = () => {
                     <Sidebar></Sidebar>
                 </div>
                 <div className="col-md-10 col-sm-12 col-12 d-flex justify-content-center">
-                    <h3 style={{ zIndex: '1111' }} onClick={() => sideBarInfo.changeSideBar()} ><FontAwesomeIcon icon={faOpenid} /></h3>
+                    <h3 className="d-none" style={{ zIndex: '1111' }} onClick={() => sideBarInfo.changeSideBar()} ><FontAwesomeIcon icon={faOpenid} /></h3>
 
                     <div className={`row container justify-content-center ${services.length ? '' : 'mt-5'}`}>
                         {services.length ?
