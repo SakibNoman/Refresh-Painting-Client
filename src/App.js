@@ -21,9 +21,11 @@ import Login from "./Pages/Login/Login";
 import PrivateRoute from "./Pages/Login/PrivateRoute";
 
 export const UserContext = createContext();
+export const SideBarContext = createContext();
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState({});
+  const [sideBarInfo, setSideBarInfo] = useState({});
 
   return (
     <UserContext.Provider value={[loggedInUser, setLoggedInUser]} >
@@ -52,27 +54,29 @@ function App() {
             <Projects></Projects>
             <Footer></Footer>
           </Route>
-          <PrivateRoute path="/dashboard/book/:id" >
-            <Book></Book>
-          </PrivateRoute>
-          <PrivateRoute path="/dashboard/bookingList" >
-            <BookingList></BookingList>
-          </PrivateRoute>
-          <PrivateRoute path="/dashboard/review" >
-            <Review></Review>
-          </PrivateRoute>
-          <PrivateRoute path="/dashboard/addService" >
-            <AddService></AddService>
-          </PrivateRoute>
-          <PrivateRoute path="/dashboard/manageServices" >
-            <MangeServices></MangeServices>
-          </PrivateRoute>
-          <PrivateRoute path="/dashboard/makeAdmin" >
-            <MakeAdmin></MakeAdmin>
-          </PrivateRoute>
-          <PrivateRoute path="/dashboard/orderList" >
-            <OrderList></OrderList>
-          </PrivateRoute>
+          <SideBarContext.Provider value={[sideBarInfo, setSideBarInfo]} >
+            <PrivateRoute path="/dashboard/book/:id" >
+              <Book></Book>
+            </PrivateRoute>
+            <PrivateRoute path="/dashboard/bookingList" >
+              <BookingList></BookingList>
+            </PrivateRoute>
+            <PrivateRoute path="/dashboard/review" >
+              <Review></Review>
+            </PrivateRoute>
+            <PrivateRoute path="/dashboard/addService" >
+              <AddService></AddService>
+            </PrivateRoute>
+            <PrivateRoute path="/dashboard/manageServices" >
+              <MangeServices></MangeServices>
+            </PrivateRoute>
+            <PrivateRoute path="/dashboard/makeAdmin" >
+              <MakeAdmin></MakeAdmin>
+            </PrivateRoute>
+            <PrivateRoute path="/dashboard/orderList" >
+              <OrderList></OrderList>
+            </PrivateRoute>
+          </SideBarContext.Provider>
         </Switch>
       </Router>
     </UserContext.Provider>

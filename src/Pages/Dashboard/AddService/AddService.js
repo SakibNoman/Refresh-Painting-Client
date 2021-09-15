@@ -1,5 +1,9 @@
-import React, { useState } from 'react';
+import { faOpenid } from '@fortawesome/free-brands-svg-icons';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React, { useContext, useState } from 'react';
 import { useForm } from "react-hook-form";
+import { SideBarContext } from '../../../App';
 import Sidebar from '../Sidebar/Sidebar';
 
 const AddService = () => {
@@ -12,6 +16,10 @@ const AddService = () => {
 
     //if image uploaded and ready to upload service
     const [btnEnable, setBtnEnable] = useState(false);
+
+    const [sideBarInfo] = useContext(SideBarContext)
+
+
 
     //upload service
     const onSubmit = (data, e) => {
@@ -55,14 +63,19 @@ const AddService = () => {
             })
     }
 
+
     return (
         <section>
             <div className="row mr-0">
-                <div className="col-md-2 col-sm-6 col-12">
+                <div className={`col-md-2 col-sm-6 col-12 d-md-block d-${sideBarInfo.isOpen ? 'block' : 'none'} `}>
                     <Sidebar></Sidebar>
                 </div>
-                <div className="col-md-10 col-sm-12 col-12 d-flex justify-content-center">
-                    <div className="row container mt-5 pt-5">
+                <div className="col-md-10 col-sm-12 col-12">
+                    <div className="d-flex justify-content-between align-items-center" >
+                        <h1 className="text-secondary ml-5 mt-5" > <FontAwesomeIcon icon={faPlus} /> Add Services</h1>
+                        <h3 style={{ zIndex: '1111' }} onClick={() => sideBarInfo.changeSideBar()} ><FontAwesomeIcon icon={faOpenid} /></h3>
+                    </div>
+                    <div className="row container mt-2 pt-5 ">
                         <div className="col-md-6">
                             <form onSubmit={handleSubmit(onSubmit)}>
                                 <div className="row">

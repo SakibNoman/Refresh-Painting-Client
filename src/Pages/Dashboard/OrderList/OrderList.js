@@ -45,12 +45,12 @@ const OrderList = () => {
     return (
         <section>
             <div className="row mr-0">
-                <div className="col-md-2 col-sm-6 col-12">
+                <div className="col-2">
                     <Sidebar></Sidebar>
                 </div>
-                <div className="col-md-10 col-sm-12 col-12 d-flex justify-content-center">
+                <div className="col-10 d-flex justify-content-center">
                     <div className="row container mt-5 justify-content-center">
-                        {orders.length ? <Table bordered variant="light" >
+                        {orders.length ? <Table bordered striped hover responsive size="sm" variant="light" className="" >
                             <thead>
                                 <tr >
                                     <th>Name</th>
@@ -61,9 +61,8 @@ const OrderList = () => {
                                 </tr>
                             </thead>
                             <tbody>{
-
-                                orders.map(each => <tr style={{ height: '80px' }} ><td>{each.fullname}</td> <td> {each.email} </td><td>{each.service}</td><td>Credit Card</td><td>
-                                    <select name={each._id} value={each.status} onChange={e => handleChange(e)} className={`form-control w-75 border-0 text-${each.color}`} >
+                                orders.map(each => <tr  ><td>{each.fullname}</td> <td> {each.email} </td><td>{each.service}</td><td>Credit Card</td><td>
+                                    <select name={each._id} value={each.status} onChange={e => handleChange(e)} className={`form-control w-75 border-0 text-white bg-${each.color}`} >
                                         <option value="Pending">Pending</option>
                                         <option value="On going">On going</option>
                                         <option value="Done">Done</option>

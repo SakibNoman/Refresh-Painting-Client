@@ -9,3 +9,8 @@
 .sidebar svg {
   margin-right: 5px;
 }
+@media only screen and (max-width: 600px) {
+  .sidebar {
+    z-index: 111;
+  }
+}
