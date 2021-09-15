@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Loader from '../../Shared/Loader/Loader';
+import Loader from '../../../Components/Shared/Loader/Loader';
 import Sidebar from '../Sidebar/Sidebar';
 import ManageServiceCard from './ManageServiceCard';
 

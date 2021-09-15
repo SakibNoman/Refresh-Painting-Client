@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { UserContext } from '../../../App';
-import Loader from '../../Shared/Loader/Loader';
+import Loader from '../../../Components/Shared/Loader/Loader';
 import Sidebar from '../Sidebar/Sidebar';
 import BookingCard from './BookingCard';
 

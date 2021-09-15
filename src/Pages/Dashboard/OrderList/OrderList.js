@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Table } from 'react-bootstrap';
-import Loader from '../../Shared/Loader/Loader';
+import Loader from '../../../Components/Shared/Loader/Loader';
 import Sidebar from '../Sidebar/Sidebar';
 
 const OrderList = () => {

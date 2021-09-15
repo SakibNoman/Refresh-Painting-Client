@@ -4,15 +4,15 @@ import {
   Route, Switch
 } from "react-router-dom";
 import './App.css';
-import AddService from "./Components/Dashboard/AddService/AddService";
-import Book from "./Components/Dashboard/Book/Book";
-import BookingList from "./Components/Dashboard/BookingList/BookingList";
-import MakeAdmin from "./Components/Dashboard/MakeAdmin/MakeAdmin";
-import MangeServices from "./Components/Dashboard/MangeServices/MangeServices";
-import OrderList from "./Components/Dashboard/OrderList/OrderList";
-import Review from "./Components/Dashboard/Review/Review";
 import Footer from "./Components/Shared/Footer/Footer";
 import TopBar from "./Components/Shared/TopBar/TopBar";
+import AddService from "./Pages/Dashboard/AddService/AddService";
+import Book from "./Pages/Dashboard/Book/Book";
+import BookingList from "./Pages/Dashboard/BookingList/BookingList";
+import MakeAdmin from "./Pages/Dashboard/MakeAdmin/MakeAdmin";
+import MangeServices from "./Pages/Dashboard/MangeServices/MangeServices";
+import OrderList from "./Pages/Dashboard/OrderList/OrderList";
+import Review from "./Pages/Dashboard/Review/Review";
 import About from "./Pages/Home/About/About";
 import Home from "./Pages/Home/Home/Home";
 import Services from "./Pages/Home/PaintingServices/PaintingServices";
