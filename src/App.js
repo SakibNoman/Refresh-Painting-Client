@@ -1,4 +1,5 @@
 import { createContext, useState } from "react";
+import { Toaster } from "react-hot-toast";
 import {
   BrowserRouter as Router,
   Route, Switch
@@ -30,6 +31,7 @@ function App() {
   return (
     <UserContext.Provider value={[loggedInUser, setLoggedInUser]} >
       <Router>
+        <Toaster />
         <Switch>
           <Route exact path="/" >
             <Home></Home>

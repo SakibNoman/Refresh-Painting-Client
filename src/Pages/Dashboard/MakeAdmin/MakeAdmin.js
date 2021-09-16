@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import toast from 'react-hot-toast';
+import { makeAdmin } from '../../../Services/DashboardServices';
 import Sidebar from '../Sidebar/Sidebar';
 
 const MakeAdmin = () => {
@@ -9,17 +11,13 @@ const MakeAdmin = () => {
 
         const eventValue = { email: adminMail }
 
-        fetch('https://morning-escarpment-96840.herokuapp.com/addAdmin', {
-            method: "POST",
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(eventValue)
-        })
-            .then(res => {
+        const myPromise = makeAdmin(eventValue)
 
-                alert("Admin added successfully")
-            })
+        toast.promise(myPromise, {
+            loading: 'Loading',
+            success: "Admin added successfully",
+            error: "Admin is not added",
+        });
 
     }
 

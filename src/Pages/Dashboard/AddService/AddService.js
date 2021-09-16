@@ -3,7 +3,9 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useContext, useState } from 'react';
 import { useForm } from "react-hook-form";
+import toast from 'react-hot-toast';
 import { SideBarContext } from '../../../App';
+import { addService, imageUpload } from '../../../Services/DashboardServices';
 import Sidebar from '../Sidebar/Sidebar';
 
 const AddService = () => {
@@ -32,17 +34,16 @@ const AddService = () => {
             serviceDesc: data.description
         }
 
-        fetch('https://morning-escarpment-96840.herokuapp.com/addService', {
-            method: "POST",
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(eventValue)
-        })
-            .then(res => {
-                alert("Uploaded Successfully")
-            })
+        const myPromise = addService(eventValue)
+            .then(res => { })
+            .catch(err => { })
         e.target.reset()
+
+        toast.promise(myPromise, {
+            loading: 'Loading',
+            success: 'Service added successfully',
+            error: 'Service is not added',
+        });
     };
 
     //upload image ot third party and find link
@@ -52,15 +53,17 @@ const AddService = () => {
         imageData.set('key', 'd31833276d6f7b577c800fa621a054fd');
         imageData.append('image', files);
 
-        fetch('https://api.imgbb.com/1/upload', {
-            method: "POST",
-            body: imageData
-        })
-            .then(res => res.json())
+        const myPromise = imageUpload(imageData)
             .then(data => {
                 setImageUrl(data.data.display_url);
                 setBtnEnable(true)
             })
+
+        toast.promise(myPromise, {
+            loading: 'Loading',
+            success: 'Image uploaded',
+            error: 'Image is not uploaded',
+        });
     }
 
 
@@ -101,7 +104,7 @@ const AddService = () => {
                                 </div>
                                 <div className="row">
                                     <div className="col-md-12 text-center">
-                                        <input className={btnEnable ? "btn btn-danger" : "btn btn-danger waiting disabled"} type="submit" value="Add Service" />
+                                        <input className={btnEnable ? "btn btn-danger" : "btn btn-danger disabled"} type="submit" value="Add Service" />
                                     </div>
                                 </div>
                             </form>

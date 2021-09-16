@@ -2,17 +2,23 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Card } from 'react-bootstrap';
+import toast from 'react-hot-toast';
+import { manageService } from '../../../Services/DashboardServices';
 
 const ManageServiceCard = ({ serviceInfo }) => {
     const { serviceName, serviceImg, _id } = serviceInfo;
 
     const handleDelete = id => {
-        fetch(`https://morning-escarpment-96840.herokuapp.com/deleteService/${id}`, {
-            method: "DELETE"
-        })
+        const myPromise = manageService(id)
             .then(res => res.json())
             .then(result => console.log(result))
             .catch(err => console.log(err))
+
+        toast.promise(myPromise, {
+            loading: 'Loading',
+            success: 'Service deleted successfully',
+            error: 'Error when deleting',
+        });
     }
 
     return (

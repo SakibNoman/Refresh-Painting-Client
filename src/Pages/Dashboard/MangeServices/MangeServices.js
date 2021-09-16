@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useContext, useEffect, useState } from 'react';
 import { SideBarContext } from '../../../App';
 import Loader from '../../../Components/Shared/Loader/Loader';
+import { getPaintingServices } from '../../../Services/UserServices';
 import Sidebar from '../Sidebar/Sidebar';
 import ManageServiceCard from './ManageServiceCard';
 
@@ -12,11 +13,11 @@ const MangeServices = () => {
     const [sideBarInfo] = useContext(SideBarContext)
 
     useEffect(() => {
-        fetch('https://morning-escarpment-96840.herokuapp.com/services')
-            .then(res => res.json())
+        getPaintingServices()
             .then(data => {
                 setServices(data);
             })
+
     }, [services])
 
     return (
@@ -28,8 +29,8 @@ const MangeServices = () => {
                 <div className="col-md-10 col-sm-12 col-12 d-flex justify-content-center">
                     <h3 className="d-none" style={{ zIndex: '1111' }} onClick={() => sideBarInfo.changeSideBar()} ><FontAwesomeIcon icon={faOpenid} /></h3>
 
-                    <div className={`row container justify-content-center ${services.length ? '' : 'mt-5'}`}>
-                        {services.length ?
+                    <div className={`row container justify-content-center ${services?.length ? '' : 'mt-5'}`}>
+                        {services?.length ?
                             services.map(each => <ManageServiceCard serviceInfo={each} ></ManageServiceCard>)
                             : <Loader />
                         }
