@@ -51,3 +51,17 @@ export const imageUpload = async (imageData) => {
     })
     return await res.json()
 }
+
+export const getSingleService = async (id) => {
+    return await fetch(API_URL + `singleService/${id}`)
+}
+
+export const addOrder = async (eventValue) => {
+    return fetch(API_URL + 'addOrder', {
+        method: "POST",
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify(eventValue)
+    })
+}

@@ -33,7 +33,7 @@ const ProcessPayment = (props) => {
             <CardElement />
             <button className="btn btn-danger my-3 px-5" type="submit" disabled={!stripe}>
                 Pay
-        </button>
+            </button>
             {paymentError && <p style={{ color: "red" }}>Failed, {paymentError.message}</p>}
             {paymentSuccess && <p style={{ color: "green" }}>Payment Successful</p>}
         </form>

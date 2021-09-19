@@ -1,8 +1,10 @@
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import React, { useContext, useEffect, useState } from 'react';
-import { useParams } from 'react-router';
+import toast from 'react-hot-toast';
+import { useHistory, useParams } from 'react-router';
 import { UserContext } from '../../../App';
+import { addOrder, getSingleService } from '../../../Services/DashboardServices';
 import ProcessPayment from '../ProcessPayment/ProcessPayment';
 import Sidebar from '../Sidebar/Sidebar';
 
@@ -12,6 +14,7 @@ const Book = () => {
 
     const [{ name, email }] = useContext(UserContext);
     const { id } = useParams()
+    const history = useHistory()
 
     //order information
     const [orderInfo, setOrderInfo] = useState({
@@ -27,7 +30,7 @@ const Book = () => {
 
     //finding order info
     useEffect(() => {
-        fetch(`https://morning-escarpment-96840.herokuapp.com/singleService/${id}`)
+        getSingleService(id)
             .then(res => res.json())
             .then(data => {
                 const newOrderInfo = { ...orderInfo }
@@ -35,6 +38,7 @@ const Book = () => {
                 newOrderInfo.service = data[0].serviceName;
                 newOrderInfo.description = data[0].serviceDesc;
                 newOrderInfo.image = data[0].serviceImg
+                console.log(newOrderInfo.fullname);
                 setOrderInfo(newOrderInfo)
             })
     }, [id])
@@ -42,17 +46,18 @@ const Book = () => {
     //checking if payment clear and placing order
     const markAsPaid = (paymentInfo) => {
         if (paymentInfo !== null) {
-            fetch('https://morning-escarpment-96840.herokuapp.com/addOrder', {
-                method: "POST",
-                headers: {
-                    'content-type': 'application/json'
-                },
-                body: JSON.stringify(orderInfo)
-            })
+            const myPromise = addOrder(orderInfo)
                 .then(res => {
-                    console.log("Success");
-                    alert("Ordered Successfully")
+                    console.log("Ordered Successfully")
+                    toast.promise(myPromise, {
+                        loading: 'Loading',
+                        success: 'Ordered Successfully',
+                        error: 'Error when taking order',
+                    });
+                    history.push('/dashboard/bookingList')
                 })
+
+
         }
     }
 
