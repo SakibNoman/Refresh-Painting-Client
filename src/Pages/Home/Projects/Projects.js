@@ -20,7 +20,7 @@ const Projects = () => {
                         <h1 className="text-center mt-3" >Take A Look <br /> Our Latest Project</h1>
                     </div>
                     {
-                        projectList.map(each => <ProjectCard projectInfo={each} ></ProjectCard>)
+                        projectList.map(each => <ProjectCard key={each.projectName} projectInfo={each} ></ProjectCard>)
                     }
                 </div>
             </div>

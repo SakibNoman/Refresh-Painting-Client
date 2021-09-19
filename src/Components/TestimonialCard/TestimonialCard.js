@@ -19,10 +19,8 @@ const TestimonialCard = ({ testimonialInfo }) => {
                     </div>
                 </div>
                 <Card.Body>
-                    <Card.Text >
-                        <div className="custom-review-card" >
-                            {review}
-                        </div>
+                    <Card.Text className="custom-review-card" >
+                        {review}
                     </Card.Text>
                     <StarRatings
                         rating={Number(rating)}

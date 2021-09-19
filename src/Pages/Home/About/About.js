@@ -20,7 +20,7 @@ const About = () => {
                         <h1 className="text-center mt-3" >We Are Professioanal <br />Painting Services</h1>
                     </div>
                     {
-                        skillInfo.map(each => <Progress perchantage={each} ></Progress>)
+                        skillInfo.map(each => <Progress key={each.name} perchantage={each} ></Progress>)
                     }
                 </div>
             </div>

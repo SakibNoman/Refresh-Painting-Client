@@ -11,7 +11,7 @@ const ProjectCard = ({ projectInfo }) => {
                     <Card.Img className="image" variant="top" src={projectImg} />
                 </div>
                 <div className="overlay">
-                    <div class="text">
+                    <div className="text">
                         <h5>{projectName}</h5>
                         <p>{projectLocation}</p>
                     </div>

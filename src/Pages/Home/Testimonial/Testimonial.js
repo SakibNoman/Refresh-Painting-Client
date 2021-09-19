@@ -25,7 +25,7 @@ const Testimonial = () => {
                     <div className="w-100 custom-overflow" >
                         <div className="d-flex justify-content-between" >
                             {
-                                testimonialInfo.map(each => <TestimonialCard testimonialInfo={each} ></TestimonialCard>)
+                                testimonialInfo.map(each => <TestimonialCard key={each._id} testimonialInfo={each} ></TestimonialCard>)
                             }
                         </div>
                     </div>
