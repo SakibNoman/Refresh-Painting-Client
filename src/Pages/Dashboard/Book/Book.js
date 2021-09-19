@@ -49,15 +49,14 @@ const Book = () => {
             const myPromise = addOrder(orderInfo)
                 .then(res => {
                     console.log("Ordered Successfully")
-                    toast.promise(myPromise, {
-                        loading: 'Loading',
-                        success: 'Ordered Successfully',
-                        error: 'Error when taking order',
-                    });
+
                     history.push('/dashboard/bookingList')
                 })
-
-
+            toast.promise(myPromise, {
+                loading: 'Loading',
+                success: 'Ordered Successfully',
+                error: 'Error when taking order',
+            });
         }
     }
 

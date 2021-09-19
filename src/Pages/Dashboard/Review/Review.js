@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
 import { useForm } from "react-hook-form";
+import toast from 'react-hot-toast';
 import { UserContext } from '../../../App';
+import { addReview } from '../../../Services/DashboardServices';
 import Sidebar from '../Sidebar/Sidebar';
 
 const Review = () => {
@@ -15,18 +17,16 @@ const Review = () => {
             rating: data.rating
         }
 
-        fetch('https://morning-escarpment-96840.herokuapp.com/addReview', {
-            method: "POST",
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(eventValue)
-        })
+        const myPromise = addReview(eventValue)
             .then(res => {
-                console.log("Success");
-                alert("Uploaded Successfully")
+                e.target.reset()
             })
-        e.target.reset()
+        toast.promise(myPromise, {
+            loading: 'Loading',
+            success: 'Review added Successfully',
+            error: 'Error when giving review',
+        });
+
     };
     return (
         <section>

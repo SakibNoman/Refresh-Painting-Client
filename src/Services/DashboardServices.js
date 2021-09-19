@@ -65,3 +65,17 @@ export const addOrder = async (eventValue) => {
         body: JSON.stringify(eventValue)
     })
 }
+
+export const getUserOrder = async (email) => {
+    return await fetch(API_URL + `userOrder/${email}`)
+}
+
+export const addReview = async (eventValue) => {
+    return fetch(API_URL + 'addReview', {
+        method: "POST",
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify(eventValue)
+    })
+}

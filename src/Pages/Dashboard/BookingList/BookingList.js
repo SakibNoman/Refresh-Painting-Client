@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { UserContext } from '../../../App';
 import Loader from '../../../Components/Shared/Loader/Loader';
+import { getUserOrder } from '../../../Services/DashboardServices';
 import Sidebar from '../Sidebar/Sidebar';
 import BookingCard from './BookingCard';
 
@@ -11,7 +12,7 @@ const BookingList = () => {
     const [{ email }] = useContext(UserContext);
 
     useEffect(() => {
-        fetch(`https://morning-escarpment-96840.herokuapp.com/userOrder/${email}`)
+        getUserOrder(email)
             .then(res => res.json())
             .then(data => {
                 data.reverse()
