@@ -1,8 +1,14 @@
 
 const API_URL = 'https://morning-escarpment-96840.herokuapp.com/';
+// const API_URL = 'http://localhost:5000/';
+const token = {
+    headers: {
+        "x-access-token": localStorage.getItem('token')
+    }
+}
 
 export const getOrderList = async () => {
-    const res = await fetch(API_URL + 'orders');
+    const res = await fetch(API_URL + 'orders', token);
     return await res.json();
 }
 
@@ -28,7 +34,7 @@ export const makeAdmin = async (eventValue) => {
 }
 
 export const manageService = async (id) => {
-    return await fetch(`https://morning-escarpment-96840.herokuapp.com/deleteService/${id}`, {
+    return await fetch(API_URL + `deleteService/${id}`, {
         method: "DELETE"
     })
 }

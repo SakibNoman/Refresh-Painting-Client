@@ -2,6 +2,8 @@ import firebase from "firebase/app";
 import "firebase/auth";
 import firebaseConfig from './firebase.config';
 
+const API_URL = 'https://morning-escarpment-96840.herokuapp.com/'
+
 
 
 if (firebase.apps.length === 0) {
@@ -10,7 +12,7 @@ if (firebase.apps.length === 0) {
 
 //Checking admin or not
 export const checkAdmin = async (email) => {
-    const res = await fetch('https://morning-escarpment-96840.herokuapp.com/isAdmin', {
+    const res = await fetch(API_URL + 'isAdmin', {
         method: "POST",
         headers: {
             'content-type': 'application/json'
@@ -33,4 +35,10 @@ export const signIn = (data) => {
 export const googleSignIn = () => {
     var provider = new firebase.auth.GoogleAuthProvider();
     return firebase.auth().signInWithPopup(provider)
+}
+
+// Get token
+export const getToken = async () => {
+    const res = await fetch('http://localhost:5000/token');
+    return await res.json();
 }
