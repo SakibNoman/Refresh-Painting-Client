@@ -1,9 +1,9 @@
 import React from 'react';
-import './loader.css';
+import styles from '../../../Styles/loader.module.css';
 
 const Loader = () => {
     return (
-        <div className="reverse-spinner " >
+        <div className={styles.reverseSpinner} >
 
         </div>
     );
