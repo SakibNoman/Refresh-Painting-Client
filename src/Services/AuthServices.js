@@ -39,6 +39,6 @@ export const googleSignIn = () => {
 
 // Get token
 export const getToken = async () => {
-    const res = await fetch('http://localhost:5000/token');
+    const res = await fetch(API_URL + 'token');
     return await res.json();
 }
